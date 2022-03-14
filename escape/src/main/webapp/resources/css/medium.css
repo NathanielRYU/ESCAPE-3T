@@ -1,0 +1,292 @@
+@charset "UTF-8";
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+#mid {
+	font-family: 'Pretendard-Regular';
+	width:98.8%;
+	height:86.9%;
+	}
+	
+#line1 {
+	border:5px solid #ffffff;
+	margin: 0.3% 0% 0% 0%;
+	background-color:#ffffff;
+	}
+	
+#box2 {
+	width:60%;
+	height:21%;
+	margin:0.5% 0% 0% 23.4%;
+	position:absolute;
+	}
+	
+#fishing {
+	border:2px solid #3d3d3b;
+	width: 13%;
+	height:30%;
+	margin:3% 0% 1% 10%;
+	position:absolute;
+	text-align:center;
+	background-color:#FFCD36;
+	box-shadow: 3px 3px 10px #566270;
+	}
+
+#fishing1{
+	position:absolute; top:50%; bottom:50%; transform:translate(-50%,-50%);
+	width:60%;
+	height:60%;
+	}
+	
+#fishingtip {
+	border:2px solid #3d3d3b;
+	width: 13%;
+	height:30%;
+	margin:3% 0% 1% 27%;
+	position:absolute;
+	text-align:center;
+	background-color:#FFCD36;
+	box-shadow: 3px 3px 10px #566270;
+	}
+#fishingtip1{
+	position:absolute; top:50%; bottom:50%; transform:translate(-50%,-50%);
+	width:70%;
+	height:70%;
+	}
+	
+#camping {
+	border:2px solid #3d3d3b;
+	width: 13%;
+	height:30%;
+	margin:3% 0% 1% 44%;
+	position:absolute;
+	text-align:center;
+	background-color:#FFCD36;
+	box-shadow: 3px 3px 10px #566270;
+	}
+	
+#camping1{
+	position:absolute; top:50%; bottom:50%; transform:translate(-50%,-50%);
+	width:70%;
+	height:70%;
+	}
+	
+#camping_rental {
+	border:2px solid #3d3d3b;
+	width: 13%;
+	height:30%;
+	margin:3% 0% 1% 61%;
+	position:absolute;
+	text-align:center;
+	background-color:#FFCD36;
+	box-shadow: 3px 3px 10px #566270;
+	}
+
+#camping_rental1{
+	position:absolute; top:50%; bottom:50%; transform:translate(-50%,-50%);
+	width:70%;
+	height:70%;
+	}
+	
+#fishing_rental {
+	border:2px solid #3d3d3b;
+	width: 13%;
+	height:30%;
+	margin:15% 0% 0% 10%;
+	position:absolute;
+	text-align:center;
+	background-color:#FFCD36;
+	box-shadow: 3px 3px 10px #566270;
+	}
+
+#fishing_rental1{
+	position:absolute; top:50%; bottom:50%; transform:translate(-50%,-50%);
+	width:60%;
+	height:60%;
+	}
+	
+#fishing_community {
+	border:2px solid #3d3d3b;
+	width: 13%;
+	height:30%;
+	margin:15% 0% 0% 27%;
+	position:absolute;
+	text-align:center;
+	background-color:#FFCD36;
+	box-shadow: 3px 3px 10px #566270;
+	}
+	
+#fishing_community1{
+	position:absolute; top:50%; bottom:50%; transform:translate(-50%,-50%);
+	width:60%;
+	height:60%;
+ }
+	
+#rental {
+	border:2px solid #3d3d3b;
+	width: 13%;
+	height:30%;
+	margin:15% 0% 0% 44%;
+	position:absolute;
+	text-align:center;
+	background-color:#FFCD36;
+	box-shadow: 3px 3px 10px #566270;
+	}
+
+#rental1{
+	position:absolute; top:50%; bottom:50%; transform:translate(-50%,-50%);
+	width:60%;
+	height:60%;
+	}
+	
+#camping_community {
+	border:2px solid #3d3d3b;
+	width: 13%;
+	height:30%;
+	margin:15% 0% 0% 61%;
+	position:absolute;
+	text-align:center;
+	background-color:#FFCD36;
+	box-shadow: 3px 3px 10px #566270;
+	}
+	
+#camping_community1{
+	position:absolute; top:50%; bottom:50%; transform:translate(-50%,-50%);
+	width:60%;
+	height:60%;
+	}
+	
+#line2 {
+	border:5px solid #ffffff;
+	margin: 30% 0% 0% 0%;
+	background-color:#ffffff;
+	}
+	
+#pop {
+	width:45%;
+	height:22%;
+	position:absolute; top:29%;
+	margin:0% 0% 0% 26%;
+	padding:0.5%;
+	}
+	
+#pop_notice {
+	border:1px solid #3d3d3b;
+	width:48%;
+	height:94%;
+	position:absolute;
+	margin:0.2% 0% 0% 0.1%;
+	font-size:30pt;
+	}
+	
+#pop_notice_box{
+	width:98%;
+	height:90%;
+	position:absolute;
+	margin:2% 1% 1% 1%;
+	font-size:30pt;
+	
+	}
+	
+#pop_community {
+	border:1px solid #3d3d3b;
+	width:48%;
+	height:94%;
+	position:absolute;
+	margin:0.2% 0% 0% 49.5%;
+	font-size:30pt;
+	}
+	
+#pop_community_box{
+	width:98%;
+	height:90%;
+	position:absolute;
+	margin:2% 1% 1% 1%;
+	font-size:30pt;
+	}
+#rank {
+	border:1px solid #1C1F88;
+	width:60%;
+	height:3.3%;
+	position:absolute; top:23%;
+	margin:26.5% 0% 0% 21%;
+	text-align:center;
+	background-color:#292929;
+	font-size:30pt;
+	color:#ffffff;
+	}
+	
+#rank_list{
+	border:3px solid #3d3d3b;
+	width:59.8%;
+	height:25%;
+	position:absolute; top:61.9%; left:21%;
+	padding:1% 0% 0% 0%;
+	}
+	
+#rank_list1{
+	border:1px solid #3d3d3b;
+	width:30%;
+	height:82.5%;
+	float: left;
+	margin:2% 0% 0% 3%;
+	text-align:center;
+	font-size: 20pt;
+	background-color:#3d3d3b;
+	color:#FFFFFF;
+	}
+	
+#rank_list1_image{
+	border:1px solid #3d3d3b;
+	width:94%;
+	height:77%;
+	margin:5% 3% 1% 3%;
+	background-color:#FFFFFF;
+	color:#000000;
+	}
+	
+#rank_list2{
+	border:1px solid #3d3d3b;
+	width:30%;
+	height:82.5%;
+	float: left;
+	margin:2% 0% 0% 2%;
+	text-align:center;
+	font-size: 20pt;
+	background-color:#3d3d3b;
+	color:#FFFFFF;
+	}
+	
+#rank_list2_image{
+	border:1px solid #3d3d3b;
+	width:94%;
+	height:77%;
+	margin:5% 3% 1% 3%;
+	background-color:#FFFFFF;
+	color:#000000;
+	}
+	
+#rank_list3{
+	border:1px solid #3d3d3b;
+	width:30%;
+	height:82.5%;
+	float: left;
+	margin:2% 0% 0% 2%;
+	text-align:center;
+	font-size: 20pt;
+	background-color:#3d3d3b;
+	color:#FFFFFF;
+	}
+
+#rank_list3_image{
+	border:1px solid #3d3d3b;
+	width:94%;
+	height:77%;
+	margin:5% 3% 1% 3%;
+	background-color:#FFFFFF;
+	color:#000000;
+	}

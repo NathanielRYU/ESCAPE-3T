@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="icia.escape.db.AuthenticationMapper">
+
+  <!-- 사용자 로그인 : 비밀번호 유효성 체크 -->
+  <select id="isMember" parameterType="icia.escape.beans.Members" resultType="icia.escape.beans.Members">
+      SELECT MM_PASSWORD AS MMPASSWORD, MM_CODE AS MMCODE FROM MM WHERE MM_ID=#{mmId}
+   </select>
+   
+    <!-- 사용자 로그인 : 회원 유효성 체크 -->
+   <select id="isAccess" parameterType="icia.escape.beans.Members" resultType="int">
+      SELECT COUNT(*) FROM MM WHERE MM_CODE=#{mmCode} AND MM_ID=#{mmId} AND MM_PASSWORD=#{mmPassword}
+   </select>
+   
+   <!-- 사용자 로그인 : 회원 로그기록 저장 -->
+   <insert id="insMembersAccessHistory" parameterType="icia.escape.beans.Members">
+      INSERT INTO AH(AH_ACCESSTIME, AH_MMCODE, AH_STCODE, AH_IP) VALUES(DEFAULT, #{mmCode},#{stCode},#{publicIp})
+   </insert>
+
+  <!-- 사용자 로그인 : 회원 로그기록 가져오기 -->
+  <select id="getMemberAccessInfo" parameterType = "icia.escape.beans.Members" resultType = "icia.escape.beans.Members">
+      SELECT PUBLICIP FROM ACCESSINFO WHERE MMCODE = #{mmCode}
+    </select>
+	
+	<!-- 사용자 로그인 : 회원 정보 가져오기 -->
+	<select id ="getMemberInfo" parameterType = "icia.escape.beans.Members" resultType = "icia.escape.beans.Members">
+	 SELECT MM_CODE AS MMCODE, MM_ID AS MMID, MM_NAME AS MMNAME, MM_EMAIL AS MMEMAIL, MM_NUMBER AS MMNUMBER FROM MM WHERE MM_ID = #{mmId}
+	</select>
+	
+	<!-- 사용자 회원가입 : 아이디 중복 체크 -->
+	<select id="checkMemberId" parameterType="icia.escape.beans.Members" resultType="int">
+        SELECT COUNT(*) FROM MM WHERE MM_ID=#{mmId}
+   </select>
+   
+   <!-- 사용자 회원가입 : 사용자 코드 MAX 값 -->
+   <select id="checkMemberCode"  parameterType="icia.escape.beans.Members" resultType ="String">
+   		SELECT MAX(MM_CODE)AS MMCODE FROM MM
+   </select>
+   <!-- 사용자 회원가입 : 회원정보 등록 -->
+   <insert id="insMember" parameterType="icia.escape.beans.Members">
+      INSERT INTO MM(MM_CODE, MM_NAME, MM_ID, MM_PASSWORD, MM_EMAIL, MM_NUMBER)
+        VALUES(#{mmCode},#{mmName},#{mmId},#{mmPassword},#{mmEmail},#{mmNumber})
+   </insert>
+   
+	<!-- 업체 로그인 : 업체 비밀번호 유효성 체크 -->
+	<select id="isStores" parameterType="icia.escape.beans.Stores" resultType="icia.escape.beans.Stores">
+      SELECT SR_PASSWORD AS SRPASSWORD, SR_CODE AS SRCODE FROM SR WHERE SR_ID = #{srId}
+   </select>
+   
+   <!-- 업체 로그인 : 업체 정보 유효성 체크 -->
+   <select id="isStoresAccess" parameterType="icia.escape.beans.Stores" resultType="int">
+      SELECT COUNT(*) FROM SR WHERE SR_CODE=#{srCode} AND SR_ID=#{srId} AND SR_PASSWORD=#{srPassword}
+   </select>
+   
+   <!-- 업체 로그인 : 업체 로그기록 저장 -->
+   <insert id="insStoresAccessHistory" parameterType="icia.escape.beans.Stores">
+      INSERT INTO AH(AH_ACCESSTIME, AH_MMCODE, AH_STCODE, AH_IP) VALUES(DEFAULT, #{srCode},#{stCode},#{publicIp})
+   </insert>
+   
+   <!-- 업체 로그인 : 업체 로그기록 가져오기-->
+    <select id="getStoreAccessInfo" parameterType = "icia.escape.beans.Stores" resultType = "icia.escape.beans.Stores">
+      SELECT PUBLICIP AS PUBLICIP FROM ACCESSINFO2 WHERE SRCODE = #{srCode}
+    </select>
+    <!-- 업체 정보 가져오기 -->
+	<select id ="getStoreInfo" parameterType = "icia.escape.beans.Stores" resultType = "icia.escape.beans.Stores">
+	 SELECT SR_ID AS SRID, SR_CFCODE AS CFCODE, SR_POST AS SRPOST, SR_CODE AS SRCODE, SR_NUMBER AS SRNUMBER, SR_DETAILS AS SRDETAILS, SR_EMAIL AS SREMAIL
+	FROM SR
+	WHERE SR_ID = #{srId}
+	</select>
+	
+	<!-- 업체 회원가입 : 아이디 중복 체크 -->
+	<select id="checkStoreId" parameterType="icia.escape.beans.Stores" resultType="int">
+        SELECT COUNT(*) FROM SR WHERE SR_ID = #{srId}
+   </select>
+   
+   <!-- 업체 회원가입 : 업체 코드 MAX 값 -->
+   <select id="checkStoreCode"  parameterType="icia.escape.beans.Stores" resultType ="String">
+   		SELECT MAX(SR_CODE)AS SRCODE FROM SR
+   </select>
+   
+   <!-- 업체 회원가입 : 회원정보 등록 -->
+   <insert id="insStore" parameterType="icia.escape.beans.Stores">
+     INSERT INTO SR(SR_CFCODE, SR_ID, SR_PASSWORD, SR_POST,SR_ADDRESS, SR_CODE,SR_NAME, SR_NUMBER, SR_DETAILS, SR_EMAIL,SR_IMAGE) 
+     VALUES(#{srCfCode},#{srId},#{srPassword},#{srPost},#{srAddress},#{srCode},#{srName},#{srNumber},#{srDetails},#{srEmail},#{srImage})
+   </insert>
+</mapper>
