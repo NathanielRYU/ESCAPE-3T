@@ -106,7 +106,7 @@
    </insert>
    
    <!-- 업체 아이디 찾기 -->
-   <select id="findStoreId" parameterType="icia.escape.beans.Stores" resultType="icia.escape.beans.Stores">
+   <select id="findStoreId" parameterType="icia.escape.beans.Stores" resultType="String">
    	SELECT SR_ID AS SRID FROM SR WHERE SR_NAME= #{srName} AND SR_EMAIL = #{srEmail}
    </select>
    

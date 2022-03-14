@@ -7,7 +7,7 @@
 <title>회원가입초기페이지</title>
 </head>
 <script src="resources/js/resource.js"></script>
-<script src="resources/js/SignUp.js"></script>
+<script src="resources/js/signUp.js"></script>
 
 <style>
 @font-face {

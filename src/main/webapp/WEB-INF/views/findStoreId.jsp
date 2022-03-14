@@ -333,10 +333,10 @@ button {
 					
 					<div id="information_input">
 						<div id="inputInfo">
-						
+			 			
 						<div id = "inputInfoLine"><span id = "infoLinebox">가입하신 아이디의 이름과 이메일을 적어주세요.</span></div>
 						<div id="name"><input class="input_name" type="text" id="srName"  name="srName" placeholder="이름" /></div>
-						<div id="email"><input class="input_email" type="text" id="srName" name="srEmail" placeholder="이메일" /></div>
+						<div id="email"><input class="input_email" type="text" id="srEmail" name="srEmail" placeholder="이메일" /></div>
 						</div>
 						</div>
 					</div>

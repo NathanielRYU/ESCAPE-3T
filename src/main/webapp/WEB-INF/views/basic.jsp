@@ -11,7 +11,7 @@
 <link rel="stylesheet" type="text/css" href="resources/css/topBottom.css" />
 <link rel="stylesheet" type="text/css" href="resources/css/medium.css" />
 
-<body onLoad = "getPublic()">
+<body onLoad = "getPublic(),initPage'${msg}">
 	
 		
 		<div id="basic">

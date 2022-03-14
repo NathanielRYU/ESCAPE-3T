@@ -106,10 +106,10 @@ public class FindInformation {
 	//업체 아이디 찾기
 	private void findStoreId(Stores sr) {
 	 String page = "findStoreId";
-	 System.out.println(sr);
-	 if(this.am.findStoreId(sr)!= null) {
+	 
+	 if(this.am.findStoreId(sr) != null) {
 		 this.mav.addObject("storeId", this.am.findStoreId(sr));
-		 page = "resultMemberId";
+		 page = "resultStoreId";
 	 }else {
 		 this.mav.addObject("msg", "회원정보를 찾을 수 없습니다.");
 	 }
@@ -121,7 +121,7 @@ public class FindInformation {
 	
 	//사용자 비밀번호 찾기 :: 회원 유효성 체크 --> 이메일 전송
 	private void sendMemberEmail(Members mem) {
-		
+		System.out.println(mem);
 		/*Email Info*/
 		boolean isSendMail = false;
 		String message = "등록된 정보와 일치하지 않습니다.";

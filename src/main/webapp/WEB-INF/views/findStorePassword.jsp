@@ -7,7 +7,7 @@
 <title>회원가입초기페이지</title>
 </head>
 <script src="resources/js/resource.js"></script>
-<script src="resources/js/SignUp.js"></script>
+<script src="resources/js/signUp.js"></script>
 
 <style>
 @font-face {
@@ -413,18 +413,18 @@ button {
    					<div class="modal_content">
         				<div id="modalMent">가입하신 이메일로 비밀번호 변경 메일이 전송됩니다.</div>
         				<div id="modalEmail"><span class="modalEmail">이메일</span></div>
-					<input id="typeModEmail" readOnly><br><br><br>
-        				<button type="button" id="sendMail" onClick="getNewPage('newMemPw')">메일 보내기</button>
+					<input id="typeModEmail" readOnly/><br><br><br>
+        				<button type="button" id="sendMail" onClick="sendStoreEmail('typeId','typeEmail')">메일 보내기</button>
         				<button type="button" id="modal_close_btn">취소</button>
        			</div>
        			</div>
 					
 					<div id="inputId"><span class="inputId">아이디</span></div>
-					<input id="typeId">
+					<input id="typeId" />
 					<div id="inputEmail"><span class="inputEmail">이메일</span></div>
-					<input id="typeEmail">
+					<input id="typeEmail" />
 					
-						<div id="loginpage_btn" onClick="">보내기</div>
+						<div id="loginpage_btn"  onClick="checkEmail('typeEmail')">보내기</div>
 				</div>
 			
 			
@@ -438,9 +438,7 @@ button {
 	</form>
 	
 	<script>
-    document.getElementById("loginpage_btn").onclick = function() {
-        document.getElementById("modal").style.display="block";
-    }
+    
    
     document.getElementById("modal_close_btn").onclick = function() {
         document.getElementById("modal").style.display="none";

@@ -219,7 +219,6 @@ function checkMemberId(pMmName,pMmEmail){
 	const form = makeForm("", "FindMemberId", "post");
 	
  	
- 	alert(mmName.value);
 	form.appendChild(mmName);
 	form.appendChild(mmEmail);
 	document.body.appendChild(form);
@@ -237,17 +236,53 @@ function checkStoreId(pSrName,pSrEmail){
 	form.appendChild(srName);
 	form.appendChild(srEmail);
 	document.body.appendChild(form);
-	form.submit;
+	form.submit();
 
 }
 
 
 /******************************************************************************************************/
+/*사용자,업체 비밀번호 찾기 : 모달 오픈*/ 
+function checkEmail(pEmail){
+	 document.getElementById("modal").style.display="block";
+	const email = document.getElementById(pEmail).value;
+	document.getElementById("typeModEmail").value = email;
+}
+
+/*사용자 비밀번호 찾기 : 이메일 전송*/
+function sendMemberEmail(pMmId,pMmEmail){
+	const mmId1 = document.getElementById(pMmId).value;
+	const mmEmail1 = document.getElementById(pMmEmail).value;
+	const mmId = makeInputElement("hidden","mmId",mmId1,"");
+	const mmEmail = makeInputElement("hidden","mmEmail",mmEmail1,"");
+	
+	const form = makeForm("","SendMemberEmail","post");
+	
+	form.appendChild(mmId);
+	form.appendChild(mmEmail);
+	document.body.appendChild(form);
+	form.submit();
+		
+} 
 
 
+/*업체 비밀번호 찾기 : 이메일 전송*/
+function sendStoreEmail(pSrId,pSrEmail){
+	const srId = document.getElementById(pSrId).value;
+	const srEmail = document.getElementById(pSrEmail).value;
+	const form = makeForm("","SendStoreEmail","post");
+	
+	form.appendChild(srId);
+	form.appendChild(srEmail);
+	document.body.appendChild(form);
+	form.submit();
+		
+} 
+
+
+/******************************************************************************************************/
 function fromJsonToJson(action, clientData, fn, content) {
-   alert(clientData);
-	alert(content);
+
    let ajax = new XMLHttpRequest();
    ajax.onreadystatechange = function() {
       if (ajax.readyState == 4 && ajax.status == 200) {

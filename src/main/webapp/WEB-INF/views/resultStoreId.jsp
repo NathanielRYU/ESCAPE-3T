@@ -339,7 +339,7 @@ button {
 						<div id="inputInfo">
 						
 						<div id = "inputInfoLine"><span id = "infoLinebox">회원님께서 가입하신 아이디는 아래와 같습니다.</span></div>
-						<div id="resultid">${storeId.srId}</div>
+						<div id="resultid">${storeId}</div>
 					
 						</div>
 						</div>

@@ -104,45 +104,44 @@ public class AuthenticationController {
 	/*사용자 아이디 찾기*/
 	@PostMapping("/FindMemberId")
 	public ModelAndView findMemberId(@ModelAttribute Members mem) {
-		
 		return fi.memberController("M5", mem);
 	}
 	
 	/*업체 아이디 찾기*/
 	@PostMapping("/FindStoreId")
 	public ModelAndView findStoreId(@ModelAttribute Stores sr) {
-		System.out.println(sr);
 		return fi.storeController("S5", sr);
 	}
 	
 	/*******************************비밀번호 찾기*************************/
 	/*사용자 비밀번호 찾기 : 이메일 전송*/
-	@PostMapping("/sendMemberEmail")
+	@PostMapping("/SendMemberEmail")
 	public ModelAndView sendMemberEmail(@ModelAttribute Members mem) {
+		System.out.println(mem);
 		return fi.memberController("M6", mem);
 	}
 	/*사용자 비밀번호 찾기 : 비밀번호 변경 Form*/
-	@PostMapping("/memberAuth")
+	@PostMapping("/MemberAuth")
 	public ModelAndView memberAuth(@ModelAttribute Members mem) {
 		return fi.memberController("M7", mem);
 	}
 	/*사용자 비밀번호 찾기 : 비밀번호 변경*/
-	@PostMapping("/updMemberPwd")
+	@PostMapping("/UpdMemberPwd")
 	public ModelAndView updMemberPwd(@ModelAttribute Members mem) {
 		return fi.memberController("M8", mem);
 	}
 	/*업체 비밀번호 찾기 : 이메일 전송*/
-	@PostMapping("sendStoreEmail")
+	@PostMapping("SendStoreEmail")
 	public ModelAndView sendStoreEmail(@ModelAttribute Stores sr) {
 		return fi.storeController("S6", sr);
 	}
 	/*업체 비밀번호 찾기 : 비밀번호 변경 Form*/
-	@PostMapping("/storeAuth")
+	@PostMapping("/StoreAuth")
 	public ModelAndView storeAuth(@ModelAttribute Stores sr) {
 		return fi.storeController("S7", sr);
 	}
 	/*업체 비밀번호 찾기 : 비밀번호 변경*/
-	@PostMapping("/updStorePwd")
+	@PostMapping("/UpdStorePwd")
 	public ModelAndView updStorePwd(@ModelAttribute Stores sr) {
 		return fi.storeController("S8", sr);
 	}
