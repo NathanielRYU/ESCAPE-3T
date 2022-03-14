@@ -213,7 +213,7 @@ function storeCheck(jsonData){
 /******************************************************************************************************/
 
 /*사용자 아이디 찾기*/
-function checkMemberId(pMmName,pMmEmail){
+function findMemberId(pMmName,pMmEmail){
 	const mmName = document.getElementsByName(pMmName)[0]; 
 	const mmEmail = document.getElementsByName(pMmEmail)[0]; 
 	const form = makeForm("", "FindMemberId", "post");
@@ -227,7 +227,7 @@ function checkMemberId(pMmName,pMmEmail){
 } 
 
 /*업체 아이디 찾기*/ 
-function checkStoreId(pSrName,pSrEmail){
+function findStoreId(pSrName,pSrEmail){
 	const srName = document.getElementsByName(pSrName)[0];
 	const srEmail = document.getElementsByName(pSrEmail)[0];
 	const form = makeForm("", "FindStoreId", "post");

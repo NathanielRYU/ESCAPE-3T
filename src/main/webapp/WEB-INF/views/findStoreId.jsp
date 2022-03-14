@@ -340,7 +340,7 @@ button {
 						</div>
 						</div>
 					</div>
-						<div id="idsearch_btn" onClick="checkStoreId('srName','srEmail')">조회하기</div>
+						<div id="idsearch_btn" onClick="findStoreId('srName','srEmail')">조회하기</div>
 				
 			
 			
