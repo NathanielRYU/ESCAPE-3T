@@ -7,7 +7,7 @@
 <title>회원가입초기페이지</title>
 </head>
 <script src="resources/js/resource.js"></script>
-<script src="resources/js/SignUp.js"></script>
+<script src="resources/js/signUp.js"></script>
 
 <style>
 @font-face {
@@ -336,11 +336,11 @@ button {
 						
 						<div id = "inputInfoLine"><span id = "infoLinebox">가입하신 아이디의 이름과 이메일을 적어주세요.</span></div>
 						<div id="name"><input class="input_name" type="text" id="mmName"  name="mmName" placeholder="이름" /></div>
-						<div id="email"><input class="input_email" type="text" id="mmName" name="mmEmail" placeholder="이메일" /></div>
+						<div id="email"><input class="input_email" type="text" id="mmEmail" name="mmEmail" placeholder="이메일" /></div>
 						</div>
 						</div>
 					</div>
-						<div id="idsearch_btn" onClick="checkMemberId()">조회하기</div>
+						<div id="idsearch_btn" onClick="checkMemberId('mmName','mmEmail')">조회하기</div>
 				
 			
 			

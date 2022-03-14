@@ -51,7 +51,7 @@
 					<div id="input">
 						<div id="id"><input class="input_id" type="text" name="mmId" placeholder="ID" /></div>
 						<div id="pw"><input class="input_pw" type="password" name="mmPassword" placeholder="PW" /></div>
-						<div id="find" ><span id="id_pw_find" onClick="getNewPage('findMemberId')"><a href="javascript:void(0);">아이디/비밀번호 찾기</a></span></div>		
+						<div id="find" ><span id="id_pw_find" onClick="getNewPage('findMemberInfo')"><a href="javascript:void(0);">아이디/비밀번호 찾기</a></span></div>		
 						<div id="login3"onClick="logInMember()">로그인</div>
 						<div id="join" onClick="getNewPage('signUp')">회원가입</div>
 					</div>

@@ -7,7 +7,7 @@
 <title>회원가입초기페이지</title>
 </head>
 <script src="resources/js/resource.js"></script>
-<script src="resources/js/SignUp.js"></script>
+<script src="resources/js/signUp.js"></script>
 
 <style>
 @font-face {
@@ -339,7 +339,7 @@ button {
 						<div id="inputInfo">
 						
 						<div id = "inputInfoLine"><span id = "infoLinebox">회원님께서 가입하신 아이디는 아래와 같습니다.</span></div>
-						<div id="resultid"></div>
+						<div id="resultid">${storeId.srId}</div>
 					
 						</div>
 						</div>

@@ -93,7 +93,6 @@ public class FindInformation {
 	//사용자 아이디 찾기
 	private void findMemberId(Members mem) {
 	 String page = "findMemberId";
-	 
 	 if(this.am.findMemberId(mem) != null){
 		 this.mav.addObject("memberId", this.am.findMemberId(mem));
 		 page = "resultMemberId";
@@ -107,7 +106,7 @@ public class FindInformation {
 	//업체 아이디 찾기
 	private void findStoreId(Stores sr) {
 	 String page = "findStoreId";
-	 
+	 System.out.println(sr);
 	 if(this.am.findStoreId(sr)!= null) {
 		 this.mav.addObject("storeId", this.am.findStoreId(sr));
 		 page = "resultMemberId";

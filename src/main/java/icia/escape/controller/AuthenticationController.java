@@ -102,13 +102,16 @@ public class AuthenticationController {
 	}
 	/****************************아이디 찾기********************************/
 	/*사용자 아이디 찾기*/
-	@PostMapping(value="/FindMemberId", produces="application/json; charset=UTF-8")
+	@PostMapping("/FindMemberId")
 	public ModelAndView findMemberId(@ModelAttribute Members mem) {
+		
 		return fi.memberController("M5", mem);
 	}
 	
 	/*업체 아이디 찾기*/
+	@PostMapping("/FindStoreId")
 	public ModelAndView findStoreId(@ModelAttribute Stores sr) {
+		System.out.println(sr);
 		return fi.storeController("S5", sr);
 	}
 	

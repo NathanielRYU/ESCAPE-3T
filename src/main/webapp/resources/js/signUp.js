@@ -213,30 +213,41 @@ function storeCheck(jsonData){
 /******************************************************************************************************/
 
 /*사용자 아이디 찾기*/
-function checkMemberId(){
- const pMmName = document.getElementsByName("mmName");
- const pMmEmail = document.getElementsByName("mmEmail");
-alert(pMmName);
-
- const data = "mmName=" + encodeURIComponent(pMmName) + "mmEmail=" + encodeURIComponent(pMmEmail);
-
- ajaxData("CheckMemberId", data);
+function checkMemberId(pMmName,pMmEmail){
+	const mmName = document.getElementsByName(pMmName)[0]; 
+	const mmEmail = document.getElementsByName(pMmEmail)[0]; 
+	const form = makeForm("", "FindMemberId", "post");
+	
+ 	
+ 	alert(mmName.value);
+	form.appendChild(mmName);
+	form.appendChild(mmEmail);
+	document.body.appendChild(form);
+	form.submit();
+ 	
 } 
 
-function checkStoreId(){
-	const pSrId = document.getElementsByName("srId");
-	const pSrEmail = document.getElementsByName("srEmail");
+/*업체 아이디 찾기*/ 
+function checkStoreId(pSrName,pSrEmail){
+	const srName = document.getElementsByName(pSrName)[0];
+	const srEmail = document.getElementsByName(pSrEmail)[0];
+	const form = makeForm("", "FindStoreId", "post");
 	
-	const data = "srId=" + encodeURIComponent(pSrId) + "srEmail=" + encodeURIComponent(pSrEmail);
 	
-	ajaxData("CheckStoreId", data);
-	
+	form.appendChild(srName);
+	form.appendChild(srEmail);
+	document.body.appendChild(form);
+	form.submit;
+
 }
+
+
 /******************************************************************************************************/
 
 
 function fromJsonToJson(action, clientData, fn, content) {
-  
+   alert(clientData);
+	alert(content);
    let ajax = new XMLHttpRequest();
    ajax.onreadystatechange = function() {
       if (ajax.readyState == 4 && ajax.status == 200) {
@@ -278,3 +289,22 @@ function getAjaxData(action, data) {
 		ajax.send(data);/*send 누르면 state가 3으로 변함*/
 
 	}
+	
+	
+function makeForm(fname, faction, fmethod) {
+	const form = document.createElement("form");
+	if (fname != "") { form.setAttribute("name", fname); }
+	form.setAttribute("action", faction);
+	form.setAttribute("method", fmethod);
+	return form;
+}
+
+function makeInputElement(type, name, value, placeholder) {
+	const input = document.createElement("input");
+	input.setAttribute("type", type);
+	input.setAttribute("name", name);
+	if (value != "") { input.setAttribute("value", value); }
+	if (placeholder != "") { input.setAttribute("placeholder", placeholder); }
+
+	return input;
+}
