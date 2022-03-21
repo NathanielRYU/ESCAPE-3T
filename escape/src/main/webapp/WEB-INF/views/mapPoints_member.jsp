@@ -27,7 +27,7 @@
 }
 </style>
 
-<link rel="stylesheet" type="text/css" href="resources/css/mapPoints.css" />
+<link rel="stylesheet" type="text/css" href="resources/css/mapPoints_logIn.css" />
 <script src="resources/js/resource.js"></script>
 <body onLoad="getCampingList('C001', '1000'),getCampingPage('1','10','C001', '1000'),chooseCampingList('1','10','C001','1000'),init('${objName}')"/>
 
@@ -47,7 +47,7 @@
 		
 		<div id="mid">
 			<div id="leftList">
-				<div id="listFilter"><input id="insert" type="button" value="등록" onClick=""/>
+				<div id="listFilter"><input id="insert" type="button" value="등록" onClick="getNewPageMember('${sessionInfo.mmId}','regMapMember')"/>
 					<label for="job"></label> 
 		<select id="job" name="job" size="1">
 			<option value="">전체</option>

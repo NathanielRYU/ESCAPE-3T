@@ -132,7 +132,7 @@
 			cpMaCfCode : pCpMaCfCode
 		});
 		const clientData = JSON.stringify(jsonData);
-		getAjaxJson("ChooseCampingList", clientData, "getLeftCampingList");
+		getAjaxJson("ChooseCampingList", clientData, "getPoint");
 	}
 	//캠핑 페이지 번호 불러오기
 	function getCampingPage(pPageNumber, pAmount, pCpCaCode, pCpMaCfCode) {
@@ -162,7 +162,6 @@
 	var markers = [];
 
 	function setPoint(list) {
-		console.log(list);
 		for (let n = 0; n < list.length; n++) {
 			geocoder.addressSearch(list[n].maAddress,
 					function(result, status) {
@@ -207,96 +206,7 @@
 			position : position
 		});
 
-		var placeContent = document.createElement("div")
-		placeContent.className = "place-content"
-		placeContent.id = "place-content"
-		placeContent.style.cssText = 'background: white; width:100%; height:20%; box-shadow: 3px 3px 10px #566270; border-radius: 5px;';
-
-		var placeHead = document.createElement("div")
-		placeHead.className = "place-head"
-		placeHead.style.cssText = 'height:20px; background: black; color:white; border: 1px solid black; border-radius: 5px 5px 0px 0px; padding : 10px 10px';
-
-		var placeBody = document.createElement("div")
-		placeBody.className = "place-body"
-		placeBody.style.cssText = 'width:450px; height:180px; background: white; border: 1px solid white; border-radius: 0px 0px 5px 5px;';
-
-		var placeInfo = document.createElement("div")
-		placeInfo.className = "place-info"
-		placeInfo.style.cssText = 'background: white; width:300px; height:110px; float:left; margin:10px 0px';
-
-		var placeFooter = document.createElement("div")
-		placeFooter.className = "place-footer"
-		placeFooter.style.cssText = 'background: white; width:420px; height:30px; float:left; margin:5px 0px 0px 0px; padding:5px 15px'
-
-		var placeName = document.createElement("div")
-		placeName.innerHTML = name
-		placeName.style.cssText = 'float:left;font-weight:bold;';
-
-		var placeAddImg = document.createElement("img")
-	      placeAddImg.style.cssText = 'width:110px; height:110px; background: red; float:left; margin:10px';
-	      placeAddImg.src = "resources/images/"+img
-
-		var placePhone = document.createElement("div")
-		placePhone.className = "place-phone"
-		placePhone.innerHTML = "☎ " + phone
-		placePhone.style.cssText = 'color:blue; font-size:10pt;';
-
-		var placeAddress = document.createElement("div")
-		placeAddress.className = "place-address"
-		placeAddress.innerHTML = address
-		placeAddress.style.cssText = ' font-weight:bold;font-size:11pt';
-
-		var placeZoom = document.createElement("div")
-		placeZoom.innerHTML = "지도확대"
-		placeZoom.className = "place-zoom"
-		placeZoom.style.cssText = 'float:right; background: white; color:black; margin: 0px 5px; width:65px; height:24px; border: 1px solid black;font-size:12pt; padding:3px 15px'
-		placeZoom.onclick = function() {
-			//overlay.setMap(null);
-		};
-		
-		var placeDetail = document.createElement("div")
-		placeDetail.innerHTML = "상세정보 열기 >"
-		placeDetail.className = "place-desc"
-		placeDetail.id = "place1"
-		placeDetail.style.cssText = 'float:right; background: white; color:black; width:120px; height:24px; border: 1px solid black; font-size:12pt; padding:3px 10px; display:block;'
-		placeDetail.onclick = function openPanel() {
-			const element = document.getElementById('rightview');
-			element.style.right = '0%';
-			const deplace = document.getElementById('deplace1');
-			deplace.style.display = "block";
-			const place = document.getElementById('place1');
-			place.style.display = "none";
-		}
-		
-		var deplaceDetail = document.createElement("div")
-		deplaceDetail.innerHTML = "상세정보 닫기 <"
-		deplaceDetail.className = "deplace-desc"
-		deplaceDetail.id = "deplace1"
-		deplaceDetail.style.cssText = 'float:right; background: white; color:black; width:120px; height:24px; border: 1px solid black; font-size:12pt; padding:3px 10px; display:none;'
-		deplaceDetail.onclick = function closePanel() {
-			const element = document.getElementById('rightview');
-			element.style.right = '-33%';
-			const place = document.getElementById('place1');
-			place.style.display = "block";
-			const deplace = document.getElementById('deplace1');
-			deplace.style.display = "none";
-		};
-		
-		/* placeUrl.href = place.kakao_url */
-
-		var closeBtn = document.createElement('div');
-		closeBtn.innerHTML = 'X';
-		closeBtn.style.cssText = 'float:right; background: black; color:white;'
-		closeBtn.onclick = function() {
-			overlay.setMap(null);
-		};
-
-		placeContent.append(placeHead, placeBody)
-		placeHead.append(placeName, closeBtn)
-		placeBody.append(placeAddImg, placeInfo, placeFooter)
-		placeInfo.append(placeAddress, placePhone)
-		placeFooter.append(placeDetail,deplaceDetail, placeZoom)
-		overlay.setContent(placeContent)
+		makeOverlay(name, img, phone, address, overlay);
 
 		kakao.maps.event.addListener(marker, 'click', function() {
 			if (clickedoverlay) {
@@ -397,26 +307,53 @@
 	   let column;
 	   let n = 0;
 	   let cpList;
-	   function getLeftCampingList(jsonData) {
-	      
-	      const div = document.getElementById("campingList");
-	      
-	      for (let x = 0; x < jsonData.length; x++) {
-	         let cpList = createDiv("cpList", "cpList");
-	         for (let i = 0; i < 6; i++) {
-	            column = createDiv(columnName[i], "cpList " + columnName[i]);
-	            column.innerHTML = (i == 0) ? "<img id='image' src=resources/images/"+jsonData[x].cpImage+"/>"
-	                  : (i == 1) ? jsonData[x].cpName
-	                        : (i == 2) ? jsonData[x].maAddress
-	                              : (i == 3) ? jsonData[x].haName
-	                                    : (i == 4) ? "#"+jsonData[x].thName
-	                                          : "☎"+jsonData[x].cpNumber;
-	            cpList.appendChild(column);
-	         }
-	         div.appendChild(cpList);
-	      }
-
-	      setPoint(jsonData);
+	   
+	function getPoint(list){
+		for (let x = 0; x < list.length; x++) {
+			geocoder.addressSearch(list[x].maAddress,
+					function(result, status) {
+						// 정상적으로 검색이 완료됐으면 
+						if (status === kakao.maps.services.Status.OK) {
+								
+							// 마커 하나를 지도위에 표시합니다 
+							getLeftCampingList(new kakao.maps.LatLng(result[0].y,
+									result[0].x), list[x].cpImage, list[x].cpName,
+									list[x].maAddress, list[x].haName, list[x].thName, list[x].cpNumber, new kakao.maps.LatLng(parseFloat(result[0].y)+0.11, parseFloat(result[0].x)+0.23));
+						}
+					});
+		}
+		
+	}
+	   
+	function getLeftCampingList(mPos, cpI, cpN, maA, haN, thN, cpNb, wishPos) {
+	    const div = document.getElementById("campingList");
+		let cpList = createDiv("cpList", "cpList");
+		for (let i = 0; i < 6; i++) {
+	      	column = createDiv(columnName[i], "cpList " + columnName[i]);
+	      	column.innerHTML = (i == 0) ? "<img id='image' src=resources/images/"+cpI+"/>"
+	        	: (i == 1) ? cpN
+	        		: (i == 2) ? maA
+	        			: (i == 3) ? haN
+	        				: (i == 4) ? "#"+thN
+	        					: "☎"+cpNb;
+	       	cpList.appendChild(column);
+	            
+	        var overlay2 = new kakao.maps.CustomOverlay({
+	    		yAnchor : 1.2,
+	    		position : mPos
+	    	});
+	        
+	        makeOverlay(cpN, cpI, cpNb, maA, overlay2);
+	        cpList.onclick = function() {
+	    		if (clickedoverlay) {
+	    			clickedoverlay.setMap(null);
+	    		}
+	    		overlay2.setMap(map);
+	    		clickedoverlay = overlay2;
+	    		map.setCenter(wishPos);
+	    	};
+	    }
+		div.appendChild(cpList);
 	   }
 
 	function createDiv(name, className) {
@@ -424,6 +361,99 @@
 		div.setAttribute("name", name); // <div name=""></div>
 		div.setAttribute("class", className);
 		return div;
+	}
+	
+	function makeOverlay(name, img, phone, address, overlay){
+		var placeContent = document.createElement("div")
+		placeContent.className = "place-content"
+		placeContent.id = "place-content"
+		placeContent.style.cssText = 'background: white; width:100%; height:20%; box-shadow: 3px 3px 10px #566270; border-radius: 5px;';
+
+		var placeHead = document.createElement("div")
+		placeHead.className = "place-head"
+		placeHead.style.cssText = 'height:20px; background: black; color:white; border: 1px solid black; border-radius: 5px 5px 0px 0px; padding : 10px 10px';
+
+		var placeBody = document.createElement("div")
+		placeBody.className = "place-body"
+		placeBody.style.cssText = 'width:450px; height:180px; background: white; border: 1px solid white; border-radius: 0px 0px 5px 5px;';
+
+		var placeInfo = document.createElement("div")
+		placeInfo.className = "place-info"
+		placeInfo.style.cssText = 'background: white; width:300px; height:110px; float:left; margin:10px 0px';
+
+		var placeFooter = document.createElement("div")
+		placeFooter.className = "place-footer"
+		placeFooter.style.cssText = 'background: white; width:420px; height:30px; float:left; margin:5px 0px 0px 0px; padding:5px 15px'
+
+		var placeName = document.createElement("div")
+		placeName.innerHTML = name
+		placeName.style.cssText = 'float:left;font-weight:bold;';
+
+		var placeAddImg = document.createElement("img")
+	      placeAddImg.style.cssText = 'width:110px; height:110px; background: red; float:left; margin:10px';
+	      placeAddImg.src = "resources/images/"+img
+
+		var placePhone = document.createElement("div")
+		placePhone.className = "place-phone"
+		placePhone.innerHTML = "☎ " + phone
+		placePhone.style.cssText = 'color:blue; font-size:10pt;';
+
+		var placeAddress = document.createElement("div")
+		placeAddress.className = "place-address"
+		placeAddress.innerHTML = address
+		placeAddress.style.cssText = ' font-weight:bold;font-size:11pt';
+
+		var placeZoom = document.createElement("div")
+		placeZoom.innerHTML = "지도확대"
+		placeZoom.className = "place-zoom"
+		placeZoom.style.cssText = 'float:right; background: white; color:black; margin: 0px 5px; width:65px; height:24px; border: 1px solid black;font-size:12pt; padding:3px 15px'
+		placeZoom.onclick = function() {
+			//overlay.setMap(null);
+		};
+		
+		var placeDetail = document.createElement("div")
+		placeDetail.innerHTML = "상세정보 열기 >"
+		placeDetail.className = "place-desc"
+		placeDetail.id = "place1"
+		placeDetail.style.cssText = 'float:right; background: white; color:black; width:120px; height:24px; border: 1px solid black; font-size:12pt; padding:3px 10px; display:block;'
+		placeDetail.onclick = function openPanel() {
+			const element = document.getElementById('rightview');
+			element.style.right = '0%';
+			const deplace = document.getElementById('deplace1');
+			deplace.style.display = "block";
+			const place = document.getElementById('place1');
+			place.style.display = "none";
+		}
+		
+		var deplaceDetail = document.createElement("div")
+		deplaceDetail.innerHTML = "상세정보 닫기 <"
+		deplaceDetail.className = "deplace-desc"
+		deplaceDetail.id = "deplace1"
+		deplaceDetail.style.cssText = 'float:right; background: white; color:black; width:120px; height:24px; border: 1px solid black; font-size:12pt; padding:3px 10px; display:none;'
+		deplaceDetail.onclick = function closePanel() {
+			const element = document.getElementById('rightview');
+			element.style.right = '-33%';
+			const place = document.getElementById('place1');
+			place.style.display = "block";
+			const deplace = document.getElementById('deplace1');
+			deplace.style.display = "none";
+		};
+		
+		/* placeUrl.href = place.kakao_url */
+
+		var closeBtn = document.createElement('div');
+		closeBtn.innerHTML = 'X';
+		closeBtn.style.cssText = 'float:right; background: black; color:white;'
+		closeBtn.onclick = function() {
+			overlay.setMap(null);
+		};
+
+		placeContent.append(placeHead, placeBody)
+		placeHead.append(placeName, closeBtn)
+		placeBody.append(placeAddImg, placeInfo, placeFooter)
+		placeInfo.append(placeAddress, placePhone)
+		placeFooter.append(placeDetail,deplaceDetail, placeZoom)
+		overlay.setContent(placeContent)
 	}
 </script>
 

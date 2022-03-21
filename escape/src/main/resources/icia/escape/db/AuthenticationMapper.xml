@@ -21,7 +21,7 @@
 
   <!-- 사용자 로그인 : 회원 로그기록 가져오기 -->
   <select id="getMemberAccessInfo" parameterType = "icia.escape.beans.Members" resultType = "icia.escape.beans.Members">
-      SELECT PUBLICIP,MMID,MMCODE FROM ACCESSINFO WHERE MMCODE = #{mmCode}
+      SELECT PUBLICIP,MMID,MMCODE FROM ACCESSINFO WHERE MMCODE = #{mmCode} AND STCODE = #{stCode}
     </select>
 	
 	<!-- 사용자 로그인 : 회원 정보 가져오기 -->
@@ -79,7 +79,7 @@
    
    <!-- 업체 로그인 : 업체 로그기록 가져오기-->
     <select id="getStoreAccessInfo" parameterType = "icia.escape.beans.Stores" resultType = "icia.escape.beans.Stores">
-      SELECT PUBLICIP,SRID,SRCODE AS PUBLICIP FROM ACCESSINFO2 WHERE SRCODE = #{srCode}
+      SELECT PUBLICIP,SRID,SRCODE AS PUBLICIP FROM ACCESSINFO2 WHERE SRCODE = #{srCode} AND STCODE = #{stCode}
     </select>
     
     <!-- 업체 정보 가져오기 -->

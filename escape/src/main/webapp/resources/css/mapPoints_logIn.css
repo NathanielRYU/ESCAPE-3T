@@ -104,47 +104,46 @@
    font-weight: bold;
 }   
 #box1 {
-   width:35.5%;
-   height:3.4%;
-   position:absolute; top:2.2%;
-   left:57.5%;
-   }
-      
+	width:45%;
+	height:3.4%;
+	position:absolute; top:1.7%;
+	left:57.5%;
+	}
+		
 #login1 {
-   width:28.3%;
-   height:43%;
-   margin-left:22%;
-   float: left;
-   color:#ebedec;
-   font-size:10pt;
-   }
+	width:30%;
+	height:43%;
+	margin-left:10%;
+	float: left;
+	color:#ebedec;
+	font-size:10pt;
+	}
 
 #notice {
-   width:15%;
-   height:43%;
-   margin-left:5%;
-   float: left;
-   color:#ebedec;
-   font-size:10pt;
-   }
+	width:15%;
+	height:43%;
+	margin-left:3%;
+	float: left;
+	color:#ebedec;
+	font-size:10pt;
+	}
 #shop {
-   width:15%;
-   height:43%;
-   margin-left:5.8%;
-   float: left;
-   color:#ebedec;   
-   font-size:10pt;
-   }
-
+	width:15%;
+	height:43%;
+	margin-left:5.8%;
+	float: left;
+	color:#ebedec;	
+	font-size:10pt;
+	}
 .top_menu {
-	margin-top : 3%;
+
    font-family: 'Pretendard-Regular';
    font-size: 13pt;
    cursor : pointer;
    }
    
 #list {
-   width:4%;
+   width:4.4%;
    height:4.8%;
    position:absolute;
    left:93.5%;
@@ -152,6 +151,7 @@
    background-color:#a2a9af;
    cursor : pointer;
    }
+   
    
 /*----------------------------mid------------------------------------*/
 
@@ -429,7 +429,7 @@ font-weight: bold;
 #bottom {
    font-family: 'Pretendard-Regular';
    width:97.6%;
-   height:3%;
+   height:3.8%;
    background-color:#595959;
    color:#FFFFFF;
    padding:0.05% 1%;

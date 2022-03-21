@@ -129,6 +129,7 @@ public class Login {
 					if(isAccessCheck) {
 						try {
 							/*사용자 정보 저장*/
+							System.out.println(this.am.getMemberAccessInfo(mem));
 							this.mav.addObject("accessInfo", this.am.getMemberAccessInfo(mem));
 							pu.setAttribute("sessionInfo", mav.getModel().get("accessInfo"));
 							page = "memberMain";
@@ -192,7 +193,7 @@ public class Login {
 		String page = "redirect:/";
 		this.mav.getModel().remove("msg");
 		this.mav.getModel().remove("accessInfo");
-		this.mav.getModel().remove("userInfo");
+		this.mav.getModel().remove("sessionInfo");
 		
 		try {
 			/*로그아웃 상태코드 : 2222*/
@@ -214,7 +215,7 @@ public class Login {
 		String page = "redirect:/";
 		this.mav.getModel().remove("msg");
 		this.mav.getModel().remove("accessInfo");
-		this.mav.getModel().remove("userInfo");
+		this.mav.getModel().remove("sessionInfo");
 		try {
 			/*로그아웃 상태코드 : 2222*/
 			sr.setStCode("2222");
